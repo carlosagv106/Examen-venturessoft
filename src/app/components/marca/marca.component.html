@@ -1,0 +1,64 @@
+<div class="marca-container">
+  <div class="controls">
+    <div class="category-info">
+      <span class="category-name">{{ currentCategory }}</span>
+      <span class="info-title">Instant Coupons</span>
+      <span class="items-count">{{ displayedMarcas.length }} of {{ marcas.length }} items</span>
+    </div>
+
+    <div class="controls-buttons">
+      <button
+        mat-icon-button
+        class="view-button mosaic-button"
+        [class.active]="viewMode === 'mosaico'"
+        (click)="viewMode = 'mosaico'"
+      >
+        <mat-icon>grid_view</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        class="view-button gallery-button"
+        [class.active]="viewMode === 'galeria'"
+        (click)="viewMode = 'galeria'"
+      >
+        <mat-icon>view_column</mat-icon>
+      </button>
+
+      <button mat-icon-button class="sort-button" [matMenuTriggerFor]="sortMenu">
+        <mat-icon>sort</mat-icon>
+      </button>
+
+      <mat-menu #sortMenu="matMenu">
+        <button mat-menu-item (click)="sortOrder = 'asc'; sortMarcas()">
+          <mat-icon>arrow_upward</mat-icon>
+          <span>Ascendente</span>
+        </button>
+        <button mat-menu-item (click)="sortOrder = 'desc'; sortMarcas()">
+          <mat-icon>arrow_downward</mat-icon>
+          <span>Descendente</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <div class="marca-grid" [ngClass]="viewMode">
+    <div class="marca-item" *ngFor="let marca of displayedMarcas">
+      <div class="marca-card">
+        <div class="img-container">
+          <img [src]="marca.imagen" alt="{{ marca.nombreMarca }}" />
+        </div>
+        <div class="marca-info">
+          <h3>{{ marca.nombreMarca }}</h3>
+          <p>{{ marca["descripción"] }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="marcas.length > initialItemCount" class="load-more-container">
+    <span class="load-more-text" (click)="toggleLoadMore()">
+      {{ isExpanded ? 'Show Less' : 'Show More' }} Instant Coupons
+    </span>
+  </div>
+</div>

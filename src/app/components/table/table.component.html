@@ -1,0 +1,14 @@
+<div class="table-container">
+  <div class="explore-text">Explore Instant Coupons</div>
+  <div class="categorias-container">
+    <button
+      mat-button
+      class="categoria-button"
+      *ngFor="let categoria of categorias"
+      (click)="seleccionarCategoria(categoria.idMenu)"
+      [class.selected]="selectedCategory === categoria.idMenu"
+    >
+      {{ categoria['descripción'] }}
+    </button>
+  </div>
+</div>

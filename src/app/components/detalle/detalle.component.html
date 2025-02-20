@@ -1,0 +1,14 @@
+<div class="detalle-container">
+  <h2 class="power-text">Unlock the full power of</h2>
+  <div class="featured-grid">
+    <div class="featured-card" *ngFor="let brand of featuredBrands">
+      <div class="brand-image">
+        <img [src]="brand.imagen" alt="{{ brand.nombreMarca }}">
+      </div>
+      <div class="brand-info">
+        <h3 class="brand-name">{{ brand.nombreMarca }}</h3>
+        <p class="brand-description">{{ brand['descripción'] }}</p>
+      </div>
+    </div>
+  </div>
+</div>
