@@ -20,7 +20,9 @@ export class TableComponent implements OnInit {
 
   cargarCategorias(): void {
     this.categoriaService.getCategorias().subscribe({
-      next: (categorias) => (this.categorias = categorias),
+      next: (categorias) => {
+        this.categorias = categorias.reverse();
+      },
       error: (err) => console.error('Error cargando categorías:', err),
     });
   }

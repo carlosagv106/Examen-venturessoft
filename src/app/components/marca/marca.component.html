@@ -3,10 +3,20 @@
     <div class="category-info">
       <span class="category-name">{{ currentCategory }}</span>
       <span class="info-title">Instant Coupons</span>
-      <span class="items-count">{{ displayedMarcas.length }} of {{ marcas.length }} items</span>
+      <span class="items-count"
+        >{{ displayedMarcas.length }} of {{ marcas.length }} items</span
+      >
     </div>
 
     <div class="controls-buttons">
+      <button
+        mat-icon-button
+        class="view-button list-button"
+        [class.active]="viewMode === 'lista'"
+        (click)="viewMode = 'lista'"
+      >
+        <mat-icon>view_list</mat-icon>
+      </button>
       <button
         mat-icon-button
         class="view-button mosaic-button"
@@ -25,7 +35,11 @@
         <mat-icon>view_column</mat-icon>
       </button>
 
-      <button mat-icon-button class="sort-button" [matMenuTriggerFor]="sortMenu">
+      <button
+        mat-icon-button
+        class="sort-button"
+        [matMenuTriggerFor]="sortMenu"
+      >
         <mat-icon>sort</mat-icon>
       </button>
 
@@ -58,7 +72,7 @@
 
   <div *ngIf="marcas.length > initialItemCount" class="load-more-container">
     <span class="load-more-text" (click)="toggleLoadMore()">
-      {{ isExpanded ? 'Show Less' : 'Show More' }} Instant Coupons
+      {{ isExpanded ? "Show Less" : "Show More" }} Instant Coupons
     </span>
   </div>
 </div>

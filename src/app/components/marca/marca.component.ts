@@ -12,7 +12,7 @@ export class MarcaComponent implements OnChanges {
   @Input() idCategoria!: number;
   marcas: Marca[] = [];
   displayedMarcas: Marca[] = [];
-  viewMode: 'mosaico' | 'galeria' = 'mosaico';
+  viewMode: 'lista'|'mosaico' | 'galeria' = 'mosaico';
   sortOrder: 'asc' | 'desc' = 'asc';
   initialItemCount = 7;
   currentCategory = 'All Categories';
